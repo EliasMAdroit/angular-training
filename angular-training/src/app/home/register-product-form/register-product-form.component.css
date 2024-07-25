@@ -1,0 +1,7 @@
+.mat-dialog-container {
+    max-width: 100%;
+    box-shadow: none;
+    background-color: transparent; /* Cambia el color de fondo si es necesario */
+    padding: 0; /* Ajusta el padding si es necesario */
+  }
+  
