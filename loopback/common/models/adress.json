@@ -1,0 +1,24 @@
+{
+  "name": "adress",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "street": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "customer": {
+      "type": "hasOne",
+      "model": "customer",
+      "foreignKey": "adressId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
