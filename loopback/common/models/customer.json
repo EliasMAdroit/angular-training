@@ -15,7 +15,7 @@
   "validations": [],
   "relations": {
     "adress": {
-      "type": "",
+      "type": "hasOne",
       "model": "adress",
       "foreignKey": "adressId"
     }
