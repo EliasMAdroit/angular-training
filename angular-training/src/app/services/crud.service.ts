@@ -7,7 +7,7 @@ import { MealProd } from '../interfaces/meal-prod';
   providedIn: 'root'
 })
 export class CrudService {
-  private apiUrl = "http://localhost:3000/api/meal-prods";
+  private apiUrl = "http://127.0.0.1:3000/api/meal-prods";
   private token = "?access_token=" +localStorage.getItem('token');
 
   constructor(private http: HttpClient) { 

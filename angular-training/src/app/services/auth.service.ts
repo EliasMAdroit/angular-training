@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { Observable,catchError,throwError } from 'rxjs';
 import { User } from '../interfaces/user';
 
@@ -18,7 +18,10 @@ export class AuthService {
   login(credentials:{email: string, password:string}): Observable<User>{
     console.log(credentials)
     return this.http.post<User>(this.loginUrl,credentials).pipe(
-      catchError((error) => this.handleError(error, 'Error al iniciar sesion'))
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error al iniciar sesión:', error);
+        return throwError('Error al iniciar sesión');
+      })
     );
   }
 
@@ -28,15 +31,19 @@ export class AuthService {
 
   register(credentials:{email: string, password:string}): Observable<User>{
     return this.http.post<User>(this.registerUrl,credentials).pipe(
-      catchError((error) => this.handleError(error, 'Error al agregar un nuevo elemento'))
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 422) {
+          alert("Email already exists")
+          return throwError('El usuario ya existe.');
+        } else {
+          
+          return  throwError('Error al agregar un nuevo elemento');
+        }
+      })
     );
   }
 
-  private handleError(error: any, message: string): Observable<never> {
-    console.error(error);
-    return throwError(message);
-  }
-
+  
 
 
 

@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit{
     private router: Router
   ){
     this.dialogRef = dialog;
+
   }
 
   ngOnInit(): void {

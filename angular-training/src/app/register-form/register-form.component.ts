@@ -27,6 +27,9 @@ export class RegisterFormComponent {
       if(data.id){
          alert("User has been register correctly")
       }
+      else {
+        alert("Email already exists")
+      }
    })
   }
 }
